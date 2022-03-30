@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            + 正号
+            - 负号 -- 可以对数字进行负号的取反
+
+            对于非Number类型的值，会先转换为Number，再运算
+             -- 可以对一个其他的数据类型使用+，来将其转换为Number
+        */
+
+        var a = 123;
+        a = -a;
+
+        a = true;
+        a = -a;
+
+        a = "18";
+        a = +a;
+/*         console.log(a);
+        console.log(typeof a); */
+
+        var result = 1 + +"2" + 3;
+        console.log(result);
+        console.log(typeof result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

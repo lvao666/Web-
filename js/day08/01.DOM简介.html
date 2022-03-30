@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">我是一个按钮</button>
+    <script>
+        /*  
+            浏览器已经提供了  文档节点对象 这个对象是window属性
+              可以在页面中直接使用，文档节点代表的是整个网页
+        */
+        // console.log(document);
+
+        // 获取到button对象
+        var btn = document.getElementById("btn");
+
+        // 修改按钮的文字
+        // btn.innerHTML = "I'm Button";
+
+        console.log(btn);
+    </script>
+</body>
+</html>

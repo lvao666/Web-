@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+                // 实际开发中很少使用构造函数来创建一个函数对象
+        // 创建一个函数对象
+        // 可以将要封装的代码以字符串的形式传递给构造参数
+        var fun = new Function("console.log('Hello 这是我的第一个函数');");
+
+        // 封装到函数中的代码不会立即执行
+        // 函数中的代码会在函数调用的时候执行
+        // 调用函数  语法： 函数对象()
+        // 当调用函数时，函数中封装的代码会按照顺序执行
+        // fun();
+        // console.log(fun);
+
+        /* 
+            使用 函数声明 来创建一个函数
+              语法： 
+                  - function 函数名([形参1,形参2...形参N]){
+                      语句.....
+                  }
+        */
+
+        function fun2(){
+            console.log("这是我的第二个函数~~");
+            alert("hhhhh");
+            document.write("┭┮﹏┭┮");
+        }
+
+        // fun2();
+        // console.log(fun2);
+
+        /* 
+            使用 函数表达式 来创建一个函数
+            var 函数名 = function([形参1,形参2,...形参N]){
+                语句.....
+            }
+        */
+       var fun3 = function(){
+           console.log("我是匿名函数中封装的代码");
+       };
+
+       fun3();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

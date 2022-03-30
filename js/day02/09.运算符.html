@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /* 
+            运算符也叫操作符
+             - 通过运算符可以对一个或多个值进行运算,并获取运算结果
+             - 比如：typeof 就是运算符，可以来获得一个值的类型
+                它会将该值的类型以字符串的形式返回
+                number string Boolean undefined object
+
+            算数运算符
+                当对非Number类型的值进行运算时，会将这些值转换为Number然后在运算
+                    任何值和NaN做运算，结果都是NaN
+            +   --> 可以对两个值相加，将结果返回
+                    如果对两个字符串进行加法运算，则会拼串
+                        会将两个字符串拼接为一个字符串并返回
+                    任何的 值和字符串 做加法运算，都会先转换为字符串，然后再和字符串做拼串的操作
+            -   --> 
+            *
+            /
+            %   取模运算（取余数）
+        */
+        var a = 123;
+
+        var result = typeof a;
+
+        a = a + 1;
+
+        a = true + 1;
+        a = true + false;
+
+        a = 2 + null;
+        a = 2 + NaN;
+
+        a = "123" + "456";
+
+        a = "锄禾日当午，" +
+            "汗滴禾下土，" +
+            "谁之盘中餐，" +
+            "粒粒皆辛苦。";
+
+        a = 123 + "1";
+        a = true + "hello";
+        // 任何值和字符串相加都会转换为字符串，并作拼串操作
+        // 可以利用此特点，将任意的数据类型转换为String 
+        // 只需要 + 一个 "" 就可完成转换
+        // 这是一种隐式的类型转换，由浏览器自动完成，实际上它也是调用了String()函数
+        var c = 123;
+        c = c + "";
+
+        // console.log(typeof result);
+        // console.log(typeof c);
+        // console.log("c = "+c);
+
+        var result = 1 + 2 +"3";
+
+        result = "1" + 2 + 3;
+
+        // 先将字符串转换为Number，再进行减法运算
+        result = 100 - NaN;
+        result = 100 - "null";
+        result = 100 - "1";
+
+        result = 2 * 2;
+        result = 2 * "8";
+        result = 2 * undefined;//NaN
+        result = 2 * NaN;  //NaN
+        result = 2 * null; //0
+
+        /* 
+            任何值作 - * / 运算时都会自动转换为Number
+                可以通过为一个值-0 *1 /1 来将其转换为Number
+        */
+       var d = "123";
+        d = d - 0;
+
+
+    //    console.log(d);
+    //    console.log(typeof d);
+        result = 9 % 3;
+        result = 9 % 4;
+        console.log("result = "+result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

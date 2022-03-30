@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 创建一个name变量
+        var name = "全局";
+
+        // 创建一个sayName()函数
+        function fun(){
+            console.log(this.name);
+        }
+
+        // 创建两个对象
+        var obj = {
+            name:"孙悟空",
+            sayName:fun
+        }
+
+        var obj2 = {
+            name:"沙和尚",
+            sayName:fun
+        }
+
+        // fun();
+        obj2.sayName();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

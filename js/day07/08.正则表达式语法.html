@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            量词
+              - 通过量词可以设置一个内容出现的次数
+              - 量词只对它前边的一个内容起作用
+              - {n} 正好出现n次
+              - {m,n} 出现m-n次
+              - {m,} m次以上
+              - + 至少一个，相当于{1,}   -- 一次以上
+              - * 0个或多个，相当于{0,}  
+              - ? 表示0个或1个，相当于{0,1}
+        */
+        var reg = /a{3}/;
+        // console.log(reg.test("aaabc"));
+        // ababab
+        reg = /(ab){3}/;
+        // console.log(reg.test("ababab"));
+ 
+        reg = /ab{1,3}c/;   // 表示出现1-3次都可以
+        reg = /ab+c/;
+        reg = /ab*c/;
+        reg = /ab?c/;
+
+        // console.log(reg.test("abbc"));
+
+
+        /* 
+            检查一个字符串中是否以a开头
+                ^  表示开头
+                $  表示结尾
+                ^a$ 表示只能有一个内容a
+        */
+        reg = /^a/;  // 匹配开头的a
+
+        reg = /a$/;  // 匹配结尾的a
+
+        /* 
+            如果在正则表达式中同时使用^ $ 则要求字符串必须完全符合正则表达式
+              可以使用 | 来表示以改内容开头或结尾
+        */
+        reg = /^a$/;
+        
+        // console.log(reg.test("abcabca"));
+
+        /* 
+            创建要给正则表达式，用来检查一个字符串是否是一个合法手机号
+
+            手机号的规则：
+                17838357498 (11位)
+
+                1.以1开头
+                2. 第二位 3-9 任意数字
+                3. 三位以后任意数字9个
+
+              ^1    [3-9]   [0-9]{9}$
+        */
+        
+        var phoneStr = "17838357498";
+
+        var phongReg = /^1[3-9][0-9]{9}$/;
+
+        console.log(phongReg.test(phoneStr));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

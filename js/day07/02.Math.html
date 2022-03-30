@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /* 
+            Math
+              - Math和其他的对象不同，它不是一个构造函数，
+                它属于一个工具类，不用创建对象，里边封装了数学运算相关的属性和方法
+        */
+        // console.log(Math.PI);
+
+        /* 
+            Math.ceil()
+              - 可以对一个数进行向上取整，小数位只要有值就自动进1
+            Math.floor()
+              - 可以对一个数进行向下取整
+            Math.round()
+              - 对一个数进行四舍五入
+        */
+        // console.log(Math.ceil(1.4));
+        // console.log(Math.floor(1.5));
+        // console.log(Math.round(1.6));
+
+        /* 
+            Math.random()
+              - 可以用来生成一个0-1之间的随机数
+              - 生成一个0-10的随机数
+              - 生成一个0-x的随机数
+                    Math.round(Math.random()*x)
+              - 生成一个x-y之间的随机数
+                    Math.round(Math.random()*(y-x)+x)
+        */
+        for(var i=0 ; i<10; i++){
+            // console.log(Math.round(Math.random()*10));
+            // console.log(Math.round(Math.random()*20));
+            // console.log(Math.round(Math.random()*9+1));
+        }
+
+        /* 
+            max()  可以获取多个数中的最大值
+            min()  可以获取多个数种的最小值
+        */
+
+        var max = Math.max(10,20,5,50);
+        var min = Math.min(2,5,45,21);
+        // console.log(max);
+        // console.log(min);
+        
+        /* 
+            Math.pow(x,y)
+                - 返回x的y次幂
+        */
+        console.log(Math.pow(12,3));
+
+        /* 
+            Math.sqrt()
+              用于对一个数进行开放运算
+        */
+        console.log(Math.sqrt(4));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
