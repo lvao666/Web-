@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+        }
+    </style>
+
+    <script>
+
+        window.onload = function(){
+            // 点击按钮以后读取box1的样式
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                /* 
+                    获取元素的当前显示的样式
+                      语法: 元素.currentStyle.样式名
+                      它可以用来读取当前元素正在显示的样式
+                    只有ie浏览器支持,其他浏览器不支持
+                */
+                // alert(box1.currentStyle.width);
+
+                /* 
+                    其他浏览器中可以使用
+                        getComputedStyle()方法来获取元素当前的样式
+                        这个方法就是window的方法,可以直接使用
+                    需要两个参数
+                        第一个:要获取样式的元素
+                        第二个:可以传递一个伪元素,一般都传null
+
+                    该方法会返回一个对象,对象中封装了当前元素对应的样式
+                      可以通过 对象.样式名来读取样式
+                      如果获取的样式没有设置,则会获取到真实的值,而不是默认值,
+                      比如: 没有设置width,它不会获取到auto ,而是一个长度
+
+                      不支持IE8及以下
+                */
+                // var obj = getComputedStyle(box1,null);
+                // alert(getComputedStyle(box1,null).width);
+
+                alert(getStyle(box1,"width"));
+            };
+        };
+
+        /* 
+            定义一个函数,用来获取指定元素的当前的样式
+            参数: 
+                 obj 要获取样式的元素
+                 name 要获取的样式名
+        */
+        function getStyle(obj , name){
+            if(window.getComputedStyle){
+                // 正常浏览器的方式,具有getComputedStyle()方法
+               return getComputedStyle(obj ,null)[name]; 
+            }else{
+                // IE8的方式,不具有getComputedStyle()的方法
+                return currentStyle[name];
+            }  
+        }
+
+    </script>
+</head>
+<body>
+    <button id="btn01">点我一下</button>
+    <br><br>
+    <div id="box1" style="width: 200px; background-color: red;"></div>
+</body>
+</html>

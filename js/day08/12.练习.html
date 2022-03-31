@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #info{
+            width: 300px;
+            height: 500px;
+            background-color: #bfa;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            /* 
+                当垂直滚动条滚动到底时，使表单项可用
+                onscroll
+                  - 该事件会在元素的滚动条滚动时触发
+            */
+
+            // 获取id为info的p元素
+            var info = document.getElementById("info");
+            // 获取两个表单项
+            var inputs = document.getElementsByTagName("input");
+            // 为info绑定一个滚动条滚动的事件
+            info.onscroll = function(){
+
+                // 检查垂直滚动条是否滚动到底
+                if(info.scrollHeight - info.scrollTop == info.clientHeight){
+
+                    // 滚动条滚动到底，使表单项可用
+                    inputs[0].disabled = false;
+                    inputs[1].disabled = false;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <h3>欢迎用户注册</h3>
+    <p id="info">
+        请仔细阅读相关内容，
+        （2）本人身份证照、《河南省居住证》照上传标准要求如下：
+        ①分正、反面两张上传；
+        ②确保证件边框完整，字迹清晰可见，亮度均匀，文字正向显示。
+        （3）本人手持身份证照，上传标准要求如下：
+        ①仅支持jpg或jpeg格式，大小不超过10M；
+        ③脸部无遮挡，头发不得遮挡脸部、眼睛、眉毛、耳朵或造成阴影，要露出五官；
+        ④确保身份证上的所有信息清晰可见、完整（没有被遮挡或者被手指捏住）；
+        ⑤照明光线均匀，脸部、鼻部不能发光，无高光、光斑，无阴影、红眼等；
+        ⑥人像对焦准确、层次清晰，不模糊；
+        ⑦不得化妆，不得佩戴眼镜、隐形眼镜、美瞳拍照；
+        （2）本人身份证照、《河南省居住证》照上传标准要求如下：
+        ①分正、反面两张上传；
+        ②确保证件边框完整，字迹清晰可见，亮度均匀，文字正向显示。
+        （3）本人手持身份证照，上传标准要求如下：
+        ①仅支持jpg或jpeg格式，大小不超过10M；
+        ③脸部无遮挡，头发不得遮挡脸部、眼睛、眉毛、耳朵或造成阴影，要露出五官；
+        ④确保身份证上的所有信息清晰可见、完整（没有被遮挡或者被手指捏住）；
+        ⑤照明光线均匀，脸部、鼻部不能发光，无高光、光斑，无阴影、红眼等；
+        ⑥人像对焦准确、层次清晰，不模糊；
+        ⑦不得化妆，不得佩戴眼镜、隐形眼镜、美瞳拍照；
+        （2）本人身份证照、《河南省居住证》照上传标准要求如下：
+        ①分正、反面两张上传；
+        ②确保证件边框完整，字迹清晰可见，亮度均匀，文字正向显示。
+        （3）本人手持身份证照，上传标准要求如下：
+        ①仅支持jpg或jpeg格式，大小不超过10M；
+        ③脸部无遮挡，头发不得遮挡脸部、眼睛、眉毛、耳朵或造成阴影，要露出五官；
+        ④确保身份证上的所有信息清晰可见、完整（没有被遮挡或者被手指捏住）；
+        ⑤照明光线均匀，脸部、鼻部不能发光，无高光、光斑，无阴影、红眼等；
+        ⑥人像对焦准确、层次清晰，不模糊；
+        ⑦不得化妆，不得佩戴眼镜、隐形眼镜、美瞳拍照；
+   
+    </p>
+
+    <!-- 如果为表单项添加disabled="disabled" 则表单项将变成不可用的状态  -->
+    <input type="checkbox" disabled="disabled">我已仔细阅读协议内容
+    <input type="submit" value="注册" disabled="disabled">
+</body>
+</html>
