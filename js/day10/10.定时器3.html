@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+
+    <script src="./js/tools.js"></script>
+    <script>
+        window.onload = function () {
+
+            // 获取box1
+            var box1 = document.getElementById("box1");
+            // 获取btn01
+            var btn01 = document.getElementById("btn01");
+
+            // 获取btn02
+            var btn02 = document.getElementById("btn02");
+
+            btn01.onclick = function () {
+                move(box1 , "left" , 800, 10);
+            };
+
+            btn02.onclick = function () {
+                move(box1 , "left" , 0, 10);
+            };
+
+            // 获取btn03
+            var btn03 = document.getElementById("btn03");
+            btn03.onclick = function(){
+                move(box2 , "left" , 800 , 10);
+            };
+
+            // 测试按钮
+            var btn04 = document.getElementById("btn04");
+            btn04.onclick = function(){
+                // move(box2 , "width" , 800 , 10);
+                // move(box2 , "top" , 800 , 10);
+                // move(box2 , "height" , 800 , 10);
+                move(box2 , "width" , 800 , 10 , function(){
+                    move(box2,"height",400,10,function(){
+                        move(box2,"top",0,10,function(){
+                            move(box2,"width",100,10,function(){
+
+                            })
+                        })
+                    })
+                })
+                   
+        };
+    };
+        // 创建一个变量，用来保存定时器的标识
+        /* 
+            目前我们的定时器的标识由全局变量timer保存，
+              所有的正在执行的定时器都在这个变量中保存
+        */
+        // var timer;
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮以后box1向右移动</button>
+    <button id="btn02">点击按钮以后box1向左移动</button>
+    <button id="btn03">点击按钮以后box1向右移动</button>
+    <button id="btn04">测试按钮</button>
+
+    <br><br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <div style="width:0;height: 1000px;border: 1px solid black; position: absolute;left: 800px;"></div>
+</body>
+
+</html>

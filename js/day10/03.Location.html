@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            Location
+              - 该对象中封装了浏览器的地址栏的信息
+        */
+        window.onload = function(){
+
+            // 获取按钮对象
+            var btn = document.getElementById("btn");
+
+            btn.onclick = function(){
+
+                // 如果直接打印location，则可以直接获取到地址栏的信息(当前页面的完整路径)
+                // alert(location);
+
+                /* 
+                    如果直接将location属性修改为一个完整的路径，或相对路径
+                      则我们页面会自动跳转到该路径，并且会生成响应的历史记录
+                */
+                // location = "http://www.baidu.com";
+
+                /* 
+                    assign()
+                      - 用来跳转到其他的页面，作用和直接修改location一样
+                */
+                // location.assign("http://www.baidu.com");
+
+                /* 
+                    reload()
+                      - 用于重新加载当前页面，作用和刷新按钮一样
+                */
+                // location.reload();
+
+                /* 
+                    replace()
+                      - 可以使用一个新的页面替换当前页面，调用完毕也会跳转页面
+                          但是不会生成历史记录，不会生成回退按钮，不能使用回退按钮回退
+                */
+                location.replace("http://www.baidu.com");
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <h1>Location</h1>
+    <input type="text">
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            var timer;
+
+            // 获取box1
+            var box1 = document.getElementById("box1");
+            // 获取btn01
+            var btn01 = document.getElementById("btn01");
+
+            // 点击按钮以后，使box1向右移动（left值增大）
+            btn01.onclick = function () {
+
+                // 关闭上一个定时器
+                clearInterval(timer);
+
+                // 开启一个定时器,用来执行动画效果
+                timer = setInterval(function () {
+                    // 获取box1的原来的left值
+                    var oldValue = parseInt(getStyle(box1, "left"));
+
+                    // 再旧值的基础上增加
+                    var newValue = oldValue + 19;
+
+                    // 判断newValue是否大于800
+                    if(newValue > 800){
+                        newValue = 800;
+                    }
+
+                    // 将新值设置给box1
+                    box1.style.left = newValue + "px";
+
+                    // 当元素移动到800px时，使其停止执行动画
+                    if(newValue == 800){
+                        // 到达目标，关闭定时器
+                        clearInterval(timer);
+                    }
+                    
+                }, 30);
+            };
+        };
+
+        /* 
+            定义一个函数,用来获取指定元素的当前的样式
+            参数: 
+                 obj 要获取样式的元素
+                 name 要获取的样式名
+        */
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                // 正常浏览器的方式,具有getComputedStyle()方法
+                return getComputedStyle(obj, null)[name];
+            } else {
+                // IE8的方式,不具有getComputedStyle()的方法
+                return currentStyle[name];
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮以后box1向右移动</button>
+    <br><br>
+    <div id="box1"></div>
+    
+    <div style="width:0;height: 1000px;border: 1px solid black; position: absolute;left: 800px;"></div>
+</body>
+
+</html>
