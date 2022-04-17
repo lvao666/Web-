@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分析生命周期</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root" :x="1">
+        <h2>当前的值是：{{n}}</h2>
+        <button @click="add">点我n+1</button>
+        <button @click="bye">点我销毁vm</button>
+    </div>
+</body>
+
+<script>
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        /* template:`
+        <div>
+        <h2>当前的值是：{{n}}</h2>
+        <button @click="add">点我n+1</button>
+        </div>`, */
+        data:{
+            n:1
+        },
+        methods:{
+            add(){
+                this.n++
+            },
+            bye(){
+                console.log('bye')
+                this.$destroy()
+            }
+        },
+        beforeCreate(){
+            console.log('beforeCreate')
+
+            // 验证生命周期函数中的this
+            // console.log(this)
+            // debugger;
+        },
+        created() {
+            console.log('created')
+            // console.log(this)
+            // debugger;
+        },
+        beforeMount() {
+            console.log('beforeMount')
+        },
+        mounted() {
+            console.log('mounted')
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate')
+        },
+        updated() {
+            console.log('updated')
+        },
+    })
+</script>
+</html>
