@@ -140,3 +140,124 @@
         }
     4.提供数据：pubsub.publish('xxxx',数据)
     5.最好在beforeDestroy钩子中，用pubsub.unsubscribe(pid)去取消订阅。
+
+## nextTick
+1.语法： this.$nextTick(回调函数)
+2.作用：在下一次DOM更新结束后执行指定的回调
+3.什么时候用：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行
+
+## Vue封装的过渡与动画
+1.作用：在插入、更新或移除DOM元素时，在合适的时候给元素添加样式类名。
+2.
+3.写法：
+    1.准备好样式：
+        元素进入的样式：
+            1.v-enter:进入的起点
+            2.v-enter-active：进入过程中
+            3.v-enter-to：进入的终点
+        元素离开的样式：
+            1.v-leave：离开的起点
+            2.v-leave-active：离开过程中
+            3.v-leave-to：离开的终点
+    2.使用<transition>包裹要过渡的元素，并配置name属性：
+        <transition name="hello">
+            <h1 v-show="isShow">你好啊！</h1>
+        </transition>
+    3.备注：若有多个元素需要过渡，则需要使用：<transition-group>，且每个元素都要指定key值
+
+## vue脚手架配置代理
+方法一
+    在vue.config.js中添加如下配置：
+    devServer:{
+        proxy:"http://localhost:5000"
+    }
+    说明：
+        1.优点：配置简单，请求资源时直接发给前端（8080）即可
+        2.缺点：不能配置多个代理，不能灵活的控制请求是否走代理
+        3.工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器（优先匹配前端资源）
+方法二
+    编写vue.config.js配置具体代理规则：
+    module.exports = {
+        devServer:{
+            proxy:{
+                '/api1':{//匹配所有以'/api'开头的请求路径
+                    target:'http://localhost:5000',  //代理目标的基础路径
+                    changeOrigin:true,
+                    pathRewrite:{'^/api1':''}
+                },
+                '/api2':{
+                    target:'http://localhost:5001',
+                    changeOrigin:true,
+                    pathRewrite:{'^/api2':''}
+                }
+            }
+        }
+    }
+<!-- 
+    changeOrigin设置为true时，服务器收到的请求头中的host为:localhost:5000
+    changeOrigin设置为false时，服务器收到的请求头中的host为:localhost:8080
+    changeOrigin默认值为true
+ -->
+说明：
+    1.优点：可以配置多个代理，且可以灵活的控制请求是否走代理。
+    2.缺点：配置略微繁琐，请求资源时必须加前缀。
+
+## 插槽
+1.作用：让父组件可以向子组件指定位置插入html结构，也是一种组件间通信的方式，适用于父组件==>子组件。
+2.分类：默认插槽、具名插槽、作用域插槽
+3.使用方式：
+    1.默认插槽：
+        父组件中：
+            <Category>
+                <div>html结构1<div>
+            </Category>
+        子组件中：
+            <template>
+                <div>
+                    <!-- 定义插槽 -->
+                    <slot>插槽默认内容...</slot>
+                </div>
+            </template>
+    2.具名插槽：
+        父组件中：
+            <Category>
+                <template>
+                    <div>html结构1</div>
+                </template>
+            </Category>
+        子组件中：
+            <template>
+                <div>
+                    <slot>插槽默认内容...</slot>
+                </div>
+            </template>
+    3.作用域插槽：
+        1.理解：数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）
+        2.具体代码：
+            父组件中：
+                <Category>
+                    <template scope="scopeData">
+                        <!-- 生成的是ul列表 -->
+                        <ul>
+                            <li v-for="g in scopeData.games" :key="g">{{g}}</li>
+                        </ul>
+                    </template>
+                </Category>
+            子组件中：
+                <template>
+                    <div>
+                        <slot :games="games"></slot>
+                    </div>
+                </template>
+
+                <script>
+                    export default {
+                        name:'Category',
+                        props:['title'],
+                        data(){
+                            return{
+                                games:['CF','LOL','超级玛丽','红色警戒'],
+                            }
+                        }
+                    }
+                </script>
